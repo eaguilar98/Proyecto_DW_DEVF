@@ -1,0 +1,33 @@
+CREATE TABLE [dbo].[facIndicators] (
+  [Id] int IDENTITY(1, 1) NOT NULL,
+  [indicatorId] int NOT NULL,
+  [date] date NOT NULL,
+  [hight] float DEFAULT 0 NOT NULL,
+  [low] float DEFAULT 0 NOT NULL,
+  [open] float DEFAULT 0 NOT NULL,
+  [close] float DEFAULT 0 NOT NULL,
+  [volume] float DEFAULT 0 NOT NULL,
+  [adj_close] float DEFAULT 0 NOT NULL,
+  [enabled] bit DEFAULT 1 NOT NULL,
+  [create_user] nvarchar(50) COLLATE Modern_Spanish_CI_AS DEFAULT 'python' NULL,
+  [create_date] date DEFAULT getdate() NULL,
+  [modif_user] nvarchar(50) COLLATE Modern_Spanish_CI_AS DEFAULT 'python' NULL,
+  [modif_date] date NULL,
+  [source] nvarchar(100) COLLATE Modern_Spanish_CI_AS DEFAULT 'Yahoo finance' NULL,
+  PRIMARY KEY CLUSTERED ([Id]),
+  CONSTRAINT [FK_facIndicators_dimIndicators] FOREIGN KEY ([indicatorId]) 
+  REFERENCES [dbo].[dimIndicators] ([Id]) 
+  ON UPDATE NO ACTION
+  ON DELETE NO ACTION
+)
+ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[dimIndicators] (
+  [Id] int IDENTITY(1, 1) NOT NULL,
+  [code] nvarchar(10) COLLATE Modern_Spanish_CI_AS NULL,
+  [description] nvarchar(50) COLLATE Modern_Spanish_CI_AS NULL,
+  PRIMARY KEY CLUSTERED ([Id])
+)
+ON [PRIMARY]
+GO
