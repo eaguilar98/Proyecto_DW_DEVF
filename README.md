@@ -12,7 +12,7 @@ El archivo ETL se ejecuta diario a las 6:30 en servidor de integracion y llena l
 dimIndicator : Tabla de dimensiones que contiene los indicadores financieros a traer información. Si se desea agregar un indicador mas solo se coloca la información en esta tabla. 
 <br>
 
-### Echos
+#### Echos
 FacIndicators : Contiene los valores de los indicadores financieros y la relación a las dimensiones
 
 
